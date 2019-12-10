@@ -21,7 +21,18 @@
       </Style>
     </ResourceDictionary>
   </Window.Resources>
-  <StackPanel DataContext="{Binding Model}">
-    <TextBox Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-  </StackPanel>
+  <StackPanel>
+    <TextBox DataContext="{Binding Model}" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+    <DataGrid
+      PreparingCellForEdit="DataGrid_PreparingCellForEdit"
+      AutoGenerateColumns="False"
+      ItemsSource="{Binding Models}">
+      <DataGrid.Columns>
+        <DataGridTextColumn          
+          Header="Name"
+          Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+      </DataGrid.Columns>
+    </DataGrid>
+  </StackPanel>  
+  
 </Window>
